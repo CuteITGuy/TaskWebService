@@ -6,7 +6,7 @@ using TaskModels;
 
 namespace TaskDataAccess
 {
-    public class TaskTestContext: ITaskDataAccess
+    public class TaskTestDataAccess: ITaskDataAccess
     {
         #region Fields
         private static readonly List<TaskInfo> _tasks =

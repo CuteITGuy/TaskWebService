@@ -4,12 +4,12 @@ using TaskDataAccess;
 using TaskModels;
 
 
-namespace TaskWebService.Controllers
+namespace TaskWebHost.Controllers
 {
     public class TaskController: ApiController
     {
         #region Fields
-        private readonly ITaskDataAccess _taskDataAccess = new TaskTestDataAccess();
+        private readonly ITaskDataAccess _taskDataAccess = new TaskEntityDataAccess();
         #endregion
 
 
