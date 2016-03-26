@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskWebHost", "TaskWebHost\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastWindowClient", "TastWindowClient\TastWindowClient.csproj", "{723B2459-1B28-484E-A363-36A97AFEA4C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Common", "..\CB.Model\CB.Model.Common\CB.Model.Common.csproj", "{33A5DF99-1312-4023-A6EF-EABB9848F5A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Common", "D:\Library\Dot Net\CB.Model\CB.Model.Common\CB.Model.Common.csproj", "{33A5DF99-1312-4023-A6EF-EABB9848F5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskViewModels", "TaskViewModels\TaskViewModels.csproj", "{06B42B41-B247-4BBD-A99E-9F6E44DF1DD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskViewModels", "TaskViewModels\TaskViewModels.csproj", "{5BA80972-BE5D-4670-A0F0-287BD6DF946E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06B42B41-B247-4BBD-A99E-9F6E44DF1DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06B42B41-B247-4BBD-A99E-9F6E44DF1DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06B42B41-B247-4BBD-A99E-9F6E44DF1DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06B42B41-B247-4BBD-A99E-9F6E44DF1DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BA80972-BE5D-4670-A0F0-287BD6DF946E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA80972-BE5D-4670-A0F0-287BD6DF946E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA80972-BE5D-4670-A0F0-287BD6DF946E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA80972-BE5D-4670-A0F0-287BD6DF946E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
