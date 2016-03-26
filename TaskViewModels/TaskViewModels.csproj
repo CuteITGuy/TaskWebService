@@ -43,6 +43,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskWindowClientViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskDataAccess\TaskDataAccess.csproj">
+      <Project>{543fcd55-be15-40b6-a9d9-d7a0e5aacd6c}</Project>
+      <Name>TaskDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskModels\TaskModels.csproj">
+      <Project>{075169a6-70e2-4d99-9846-addab8905086}</Project>
+      <Name>TaskModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
