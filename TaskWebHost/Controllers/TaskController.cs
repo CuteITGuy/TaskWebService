@@ -35,7 +35,7 @@ namespace TaskWebHost.Controllers
         [HttpGet]
         public IEnumerable<TaskInfo> GetTasks()
         {
-            return _taskDataAccess.GetAllTask();
+            return _taskDataAccess.GetAllTasks();
         }
 
         [HttpPut]

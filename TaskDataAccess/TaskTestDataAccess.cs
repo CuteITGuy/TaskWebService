@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TaskModels;
 
 
@@ -29,21 +30,29 @@ namespace TaskDataAccess
             return task;
         }
 
+        public async Task<TaskInfo> AddTaskAsync(TaskInfo task) => await Task.Run(() => AddTask(task));
+
         public void DeleteTask(int id)
         {
             var task = GetTask(id);
             if (task != null) _tasks.Remove(task);
         }
 
-        public IEnumerable<TaskInfo> GetAllTask()
+        public async Task DeleteTaskAsync(int id) => await Task.Run(() => DeleteTask(id));
+
+        public IEnumerable<TaskInfo> GetAllTasks()
         {
             return _tasks;
         }
+
+        public async Task<IEnumerable<TaskInfo>> GetAllTasksAsync() => await Task.Run(() => GetAllTasks());
 
         public TaskInfo GetTask(int id)
         {
             return _tasks.FirstOrDefault(t => t.Id == id);
         }
+
+        public async Task<TaskInfo> GetTaskAsync(int id) => await Task.Run(() => GetTask(id));
 
         public TaskInfo UpdateTask(TaskInfo task)
         {
@@ -60,6 +69,8 @@ namespace TaskDataAccess
             }
             return null;
         }
+
+        public async Task<TaskInfo> UpdateTaskAsync(TaskInfo task) => await Task.Run(() => UpdateTask(task));
         #endregion
     }
 }

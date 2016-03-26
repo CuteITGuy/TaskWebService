@@ -39,5 +39,24 @@ namespace TaskModels
             set { SetProperty(ref _isDone, value); }
         }
         #endregion
+
+
+        #region Methods
+        public void CopyFrom(TaskInfo task, bool includeId = true)
+        {
+            Description = task.Description;
+            Deadline = task.Deadline;
+            IsDone = task.IsDone;
+            if (includeId) Id = task.Id;
+        }
+
+        public void CopyTo(TaskInfo task, bool includeId = true)
+        {
+            task.Description = Description;
+            task.Deadline = Deadline;
+            task.IsDone = IsDone;
+            if (includeId) task.Id = Id;
+        }
+        #endregion
     }
 }

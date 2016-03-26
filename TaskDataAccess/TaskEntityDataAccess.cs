@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using TaskModels;
 
 
@@ -21,6 +23,13 @@ namespace TaskDataAccess
             return task;
         }
 
+        public async Task<TaskInfo> AddTaskAsync(TaskInfo task)
+        {
+            _context.Tasks.Add(task);
+            await _context.SaveChangesAsync();
+            return task;
+        }
+
         public void DeleteTask(int id)
         {
             var task = _context.Tasks.Find(id);
@@ -31,9 +40,29 @@ namespace TaskDataAccess
             }
         }
 
-        public IEnumerable<TaskInfo> GetAllTask()
+        public async Task DeleteTaskAsync(int id)
         {
-            return _context.Tasks.AsEnumerable();
+            var task = await _context.Tasks.FindAsync(id);
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+
+        public IEnumerable<TaskInfo> GetAllTasks()
+        {
+            return _context.Tasks.ToList();
+        }
+
+        public async Task<IEnumerable<TaskInfo>> GetAllTasksAsync()
+        {
+            return await _context.Tasks.ToListAsync();
         }
 
         public TaskInfo GetTask(int id)
@@ -41,24 +70,26 @@ namespace TaskDataAccess
             return _context.Tasks.Find(id);
         }
 
+        public async Task<TaskInfo> GetTaskAsync(int id)
+        {
+            return await _context.Tasks.FindAsync(id);
+        }
+
         public TaskInfo UpdateTask(TaskInfo task)
         {
             var t = _context.Tasks.Find(task.Id);
-            if (t != null)
-            {
-                t.Description = task.Description;
-                t.Deadline = task.Deadline;
-                t.IsDone = task.IsDone;
-            }
+            t?.CopyFrom(task, false);
             _context.SaveChanges();
             return t;
         }
-        #endregion
 
-
-        public void Dispose()
+        public async Task<TaskInfo> UpdateTaskAsync(TaskInfo task)
         {
-            _context.Dispose();
+            var t = await _context.Tasks.FindAsync(task.Id);
+            t?.CopyFrom(task, false);
+            await _context.SaveChangesAsync();
+            return t;
         }
+        #endregion
     }
 }
