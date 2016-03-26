@@ -3,10 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TastWindowClient"
+        xmlns:taskViewModels="clr-namespace:TaskViewModels;assembly=TaskViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+
+    <Window.Resources>
+        <taskViewModels:TaskWindowClientViewModel x:Key="MainViewModel" />
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource MainViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                  ItemsSource="{Binding Tasks}" />
+
+        <Button Grid.Row="1" Grid.Column="1" Content="Load"
+                Command="{Binding LoadAsyncCommand}" />
     </Grid>
 </Window>

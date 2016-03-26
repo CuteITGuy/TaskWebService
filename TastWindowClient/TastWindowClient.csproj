@@ -110,6 +110,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskDataAccess\TaskDataAccess.csproj">
+      <Project>{543fcd55-be15-40b6-a9d9-d7a0e5aacd6c}</Project>
+      <Name>TaskDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskModels\TaskModels.csproj">
+      <Project>{075169a6-70e2-4d99-9846-addab8905086}</Project>
+      <Name>TaskModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskViewModels\TaskViewModels.csproj">
+      <Project>{5BA80972-BE5D-4670-A0F0-287BD6DF946E}</Project>
+      <Name>TaskViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
