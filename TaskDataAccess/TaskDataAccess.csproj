@@ -49,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITaskDataAccess.cs" />
+    <Compile Include="ITaskDataAccessAsync.cs" />
+    <Compile Include="ITaskDataAccessSync.cs" />
     <Compile Include="Migrations\201603251434129_InitialCreate.cs" />
     <Compile Include="Migrations\201603251434129_InitialCreate.Designer.cs">
       <DependentUpon>201603251434129_InitialCreate.cs</DependentUpon>
@@ -72,6 +75,8 @@
       <DependentUpon>201603251436526_TaskInfoDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="TaskClientDataAccess.cs" />
+    <Compile Include="TaskDataAccessCreator.cs" />
     <Compile Include="TaskDataContext.cs" />
     <Compile Include="TaskEntityDataAccess.cs" />
     <Compile Include="TaskInfoMap.cs" />
@@ -86,6 +91,10 @@
     <ProjectReference Include="D:\Library\Dot Net\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
       <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
       <Name>CB.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Library\Dot Net\CB.Web\CB.Web.WebServices\CB.Web.WebServices.csproj">
+      <Project>{0b687f0c-192a-4dd8-a8b3-bfd7ae2f6047}</Project>
+      <Name>CB.Web.WebServices</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

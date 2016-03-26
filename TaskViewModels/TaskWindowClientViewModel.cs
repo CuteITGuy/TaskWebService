@@ -11,23 +11,66 @@ namespace TaskViewModels
     public class TaskWindowClientViewModel: ViewModelBase
     {
         #region Fields
-        private bool _canLoad;
-
+        private ICommand _addNewTaskAsyncCommand;
+        private bool _canAddNewTask = true;
+        private bool _canLoad = true;
+        private ICommand _deleteTaskAsyncCommand;
+        private int _getTaskId;
+        private TaskInfo _gottenTask;
         private ICommand _loadAsyncCommand;
-        private readonly ITaskDataAccess _taskDataAccess = new TaskEntityDataAccess();
+        private TaskInfo _newTask = new TaskInfo();
+
+        private ICommand _saveTaskAsyncCommand;
+
+        private readonly ITaskDataAccessAsync _taskDataAccess =
+            TaskDataAccessCreator.CreateFromSetting() as ITaskDataAccessAsync;
+
         private IEnumerable<TaskInfo> _tasks;
         #endregion
 
 
         #region  Properties & Indexers
+        public ICommand AddNewTaskAsyncCommand
+            => GetCommand(ref _addNewTaskAsyncCommand, async _ => await AddNewTaskAsync(), _ => CanAddNewTask);
+
+        public bool CanAddNewTask
+        {
+            get { return _canAddNewTask; }
+            private set { SetProperty(ref _canAddNewTask, value); }
+        }
+
         public bool CanLoad
         {
             get { return _canLoad; }
             private set { SetProperty(ref _canLoad, value); }
         }
 
+        public ICommand DeleteTaskAsyncCommand
+            => GetCommand(ref _deleteTaskAsyncCommand, async task => await DeleteTaskAsync(task as TaskInfo));
+
+        public int GetTaskId
+        {
+            get { return _getTaskId; }
+            set { SetProperty(ref _getTaskId, value); }
+        }
+
+        public TaskInfo GottenTask
+        {
+            get { return _gottenTask; }
+            private set { SetProperty(ref _gottenTask, value); }
+        }
+
         public ICommand LoadAsyncCommand
             => GetCommand(ref _loadAsyncCommand, async _ => await LoadAsync(), _ => CanLoad);
+
+        public TaskInfo NewTask
+        {
+            get { return _newTask; }
+            private set { SetProperty(ref _newTask, value); }
+        }
+
+        public ICommand SaveTaskAsyncCommand
+            => GetCommand(ref _saveTaskAsyncCommand, async task => await SaveTaskAsync(task as TaskInfo));
 
         public IEnumerable<TaskInfo> Tasks
         {
@@ -38,11 +81,49 @@ namespace TaskViewModels
 
 
         #region Methods
+        public async Task AddNewTaskAsync()
+        {
+            SetEnabitity(false);
+            await _taskDataAccess.AddTaskAsync(NewTask);
+            await LoadAsync();
+            NewTask = new TaskInfo();
+            SetEnabitity(true);
+        }
+
+        public async Task DeleteTaskAsync(TaskInfo task)
+        {
+            if (task.Id != null)
+            {
+                await _taskDataAccess.DeleteTaskAsync(task.Id.Value);
+                await LoadAsync();
+            }
+        }
+
+        public async Task GetTaskAsync()
+        {
+            SetEnabitity(false);
+            GottenTask = await _taskDataAccess.GetTaskAsync(GetTaskId);
+            SetEnabitity(true);
+        }
+
         public async Task LoadAsync()
         {
-            CanLoad = false;
+            SetEnabitity(false);
             Tasks = await _taskDataAccess.GetAllTasksAsync();
-            CanLoad = true;
+            SetEnabitity(true);
+        }
+
+        public async Task SaveTaskAsync(TaskInfo task)
+        {
+            await _taskDataAccess.UpdateTaskAsync(task);
+        }
+        #endregion
+
+
+        #region Implementation
+        private void SetEnabitity(bool value)
+        {
+            CanLoad = CanAddNewTask = value;
         }
         #endregion
     }

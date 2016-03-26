@@ -7,8 +7,8 @@ namespace TaskModels
     public class TaskInfo: ObservableObject
     {
         #region Fields
-        private DateTime _deadline;
-        private string _description;
+        private DateTime _deadline = DateTime.Now;
+        private string _description = "New task";
         private int? _id;
         private bool _isDone;
         #endregion

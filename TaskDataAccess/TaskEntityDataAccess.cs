@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,14 +54,14 @@ namespace TaskDataAccess
             _context.Dispose();
         }
 
-        public IEnumerable<TaskInfo> GetAllTasks()
+        public TaskInfo[] GetAllTasks()
         {
-            return _context.Tasks.ToList();
+            return _context.Tasks.ToArray();
         }
 
-        public async Task<IEnumerable<TaskInfo>> GetAllTasksAsync()
+        public async Task<TaskInfo[]> GetAllTasksAsync()
         {
-            return await _context.Tasks.ToListAsync();
+            return await _context.Tasks.ToArrayAsync();
         }
 
         public TaskInfo GetTask(int id)

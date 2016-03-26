@@ -40,12 +40,12 @@ namespace TaskDataAccess
 
         public async Task DeleteTaskAsync(int id) => await Task.Run(() => DeleteTask(id));
 
-        public IEnumerable<TaskInfo> GetAllTasks()
+        public TaskInfo[] GetAllTasks()
         {
-            return _tasks;
+            return _tasks.ToArray();
         }
 
-        public async Task<IEnumerable<TaskInfo>> GetAllTasksAsync() => await Task.Run(() => GetAllTasks());
+        public async Task<TaskInfo[]> GetAllTasksAsync() => await Task.Run(() => GetAllTasks());
 
         public TaskInfo GetTask(int id)
         {

@@ -5,7 +5,7 @@ namespace TaskDataAccess.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TaskDataAccess.TaskDataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TaskDataContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace TaskDataAccess.Migrations
             ContextKey = "TaskDataAccess.TaskDataContext";
         }
 
-        protected override void Seed(TaskDataAccess.TaskDataContext context)
+        protected override void Seed(TaskDataContext context)
         {
             //  This method will be called after migrating to the latest version.
 

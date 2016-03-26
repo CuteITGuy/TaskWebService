@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Web.Http;
 using TaskDataAccess;
 using TaskModels;
@@ -9,7 +9,8 @@ namespace TaskWebHost.Controllers
     public class TaskController: ApiController
     {
         #region Fields
-        private readonly ITaskDataAccess _taskDataAccess = new TaskEntityDataAccess();
+        private readonly ITaskDataAccessSync _taskDataAccess =
+            TaskDataAccessCreator.CreateFromSetting() as ITaskDataAccessSync;
         #endregion
 
 
@@ -33,9 +34,9 @@ namespace TaskWebHost.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TaskInfo> GetTasks()
+        public TaskInfo[] GetTasks()
         {
-            return _taskDataAccess.GetAllTasks();
+            return _taskDataAccess.GetAllTasks().ToArray();
         }
 
         [HttpPut]
