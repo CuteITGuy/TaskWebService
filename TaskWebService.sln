@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskDataAccess", "TaskDataA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskWebHost", "TaskWebHost\TaskWebHost.csproj", "{D8AD7572-7C2D-42AD-B2E7-DD8F882652EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastWindowClient", "TastWindowClient\TastWindowClient.csproj", "{723B2459-1B28-484E-A363-36A97AFEA4C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D8AD7572-7C2D-42AD-B2E7-DD8F882652EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8AD7572-7C2D-42AD-B2E7-DD8F882652EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8AD7572-7C2D-42AD-B2E7-DD8F882652EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723B2459-1B28-484E-A363-36A97AFEA4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723B2459-1B28-484E-A363-36A97AFEA4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723B2459-1B28-484E-A363-36A97AFEA4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723B2459-1B28-484E-A363-36A97AFEA4C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
