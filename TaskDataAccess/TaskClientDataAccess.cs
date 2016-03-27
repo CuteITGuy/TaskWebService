@@ -21,9 +21,9 @@ namespace TaskDataAccess
             return await Http.PostAsync<TaskInfo, TaskInfo>(_sourceUrl, task);
         }
 
-        public Task DeleteTaskAsync(int id)
+        public async Task DeleteTaskAsync(int id)
         {
-            throw new NotImplementedException();
+            await Http.DeleteAsync<object>(_sourceUrl, id);
         }
 
         public async Task<TaskInfo[]> GetAllTasksAsync()
@@ -38,7 +38,7 @@ namespace TaskDataAccess
 
         public async Task<TaskInfo> UpdateTaskAsync(TaskInfo task)
         {
-            return await Http.PostAsync<TaskInfo, TaskInfo>(_sourceUrl, task);
+            return await Http.PutAsync<TaskInfo, TaskInfo>(_sourceUrl, task);
         }
         #endregion
 

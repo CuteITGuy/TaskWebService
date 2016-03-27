@@ -19,13 +19,13 @@ namespace TaskViewModels
         private TaskInfo _gottenTask;
         private ICommand _loadAsyncCommand;
         private TaskInfo _newTask = new TaskInfo();
-
         private ICommand _saveTaskAsyncCommand;
 
         private readonly ITaskDataAccessAsync _taskDataAccess =
             TaskDataAccessCreator.CreateFromSetting() as ITaskDataAccessAsync;
 
         private IEnumerable<TaskInfo> _tasks;
+        private TaskInfo _taskSavingOrDeleting;
         #endregion
 
 
@@ -46,7 +46,9 @@ namespace TaskViewModels
         }
 
         public ICommand DeleteTaskAsyncCommand
-            => GetCommand(ref _deleteTaskAsyncCommand, async task => await DeleteTaskAsync(task as TaskInfo));
+            =>
+                GetCommand(ref _deleteTaskAsyncCommand, async task => await DeleteTaskAsync(task as TaskInfo),
+                    CanSaveOrDelete);
 
         public int GetTaskId
         {
@@ -92,10 +94,12 @@ namespace TaskViewModels
 
         public async Task DeleteTaskAsync(TaskInfo task)
         {
-            if (task.Id != null)
+            if (task?.Id != null)
             {
+                _taskSavingOrDeleting = task;
                 await _taskDataAccess.DeleteTaskAsync(task.Id.Value);
                 await LoadAsync();
+                _taskSavingOrDeleting = null;
             }
         }
 
@@ -115,12 +119,23 @@ namespace TaskViewModels
 
         public async Task SaveTaskAsync(TaskInfo task)
         {
-            await _taskDataAccess.UpdateTaskAsync(task);
+            if (task?.Id != null)
+            {
+                _taskSavingOrDeleting = task;
+                await _taskDataAccess.UpdateTaskAsync(task);
+                _taskSavingOrDeleting = null;
+            }
         }
         #endregion
 
 
         #region Implementation
+        private bool CanSaveOrDelete(object taskObj)
+        {
+            var task = taskObj as TaskInfo;
+            return task != null && task != _taskSavingOrDeleting;
+        }
+
         private void SetEnabitity(bool value)
         {
             CanLoad = CanAddNewTask = value;

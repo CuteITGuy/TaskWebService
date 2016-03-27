@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Task Management</title>
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/tasks.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse1">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" data-bind="click: viewLoadTasks">Load Tasks <span class="sr-only">Load Tasks</span></a>
+                        </li>
+                        <li>
+                            <a href="#" data-bind="click: viewAddNewTask">Add New Task <span class="sr-only">Add New Task</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="table-responsive" data-bind="visible: model.view() == 'loadTasks'">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">No.</th>
+                        <th scope="col">Description</th>
+                        <th class="text-center" scope="col">Deadline</th>
+                        <th class="text-center" scope="col">Is Done?</th>
+                        <th class="text-center" scope="col">Save</th>
+                        <th class="text-center" scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: model.tasks">
+                    <tr>
+                        <th class="text-center" scope="row" data-bind="text: ($index() + 1)"></th>
+                        <td>
+                            <input class="borderless" type="text" data-bind="value: Description" />
+                        </td>
+                        <td class="text-center">
+                            <input class="borderless" type="text" data-bind="value: Deadline" />
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: IsDone"/>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="#" role="button" data-bind="click: saveTask">Save</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger btn-sm" href="#" role="button" data-bind="click: deleteTask">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <form class="form" data-bind="visible: model.view() == 'addNewTask'">
+            <div class="form-group">
+                <label for="inpDescription">Description</label>
+                <input class="form-control" type="text" id="inpDescription" name="description"
+                       data-bind="value: model.newTask.description" />
+            </div>
+            <div class="form-group">
+                <label for="inpDeadline">Deadline</label>
+                <input class="form-control" type="text" id="inpDeadline" name="deadline"
+                       data-bind="value: model.newTask.deadline" />
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="isDone" data-bind="checked: model.newTask.isDone"> Is Done?
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success" data-bind="click: addNewTask">Add Task</button>
+        </form>
+    </div>
+
+    <script src="Scripts/jquery-2.2.1.min.js"></script>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/http.jquery.js"></script>
+    <script src="Scripts/tasks.js"></script>
+</body>
+</html>
