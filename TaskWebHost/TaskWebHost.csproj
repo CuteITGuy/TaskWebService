@@ -259,6 +259,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33A5DF99-1312-4023-A6EF-EABB9848F5A6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskDataAccess\TaskDataAccess.csproj">
       <Project>{543fcd55-be15-40b6-a9d9-d7a0e5aacd6c}</Project>
       <Name>TaskDataAccess</Name>
@@ -266,10 +270,6 @@
     <ProjectReference Include="..\TaskModels\TaskModels.csproj">
       <Project>{075169a6-70e2-4d99-9846-addab8905086}</Project>
       <Name>TaskModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Library\Dot Net\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
-      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
-      <Name>CB.Model.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

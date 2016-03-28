@@ -9,8 +9,7 @@ namespace TaskWebHost.Controllers
     public class TaskController: ApiController
     {
         #region Fields
-        private readonly ITaskDataAccessSync _taskDataAccess =
-            TaskDataAccessCreator.CreateFromSetting() as ITaskDataAccessSync;
+        private readonly ITaskDataAccess _taskDataAccess = TaskDataAccessCreator.CreateFromSetting();
         #endregion
 
 

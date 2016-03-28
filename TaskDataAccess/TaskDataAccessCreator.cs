@@ -7,7 +7,7 @@ namespace TaskDataAccess
     public class TaskDataAccessCreator
     {
         #region Methods
-        public static object CreateFromSetting()
+        public static ITaskDataAccess CreateFromSetting()
         {
             var taskDataAccessAsyncSetting = GetTaskDataAccess();
             switch (taskDataAccessAsyncSetting.ToLower())

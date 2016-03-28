@@ -44,6 +44,10 @@
     <Compile Include="TaskWindowClientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskDataAccess\TaskDataAccess.csproj">
       <Project>{543fcd55-be15-40b6-a9d9-d7a0e5aacd6c}</Project>
       <Name>TaskDataAccess</Name>
