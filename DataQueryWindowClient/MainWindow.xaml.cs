@@ -27,14 +27,14 @@ namespace DataQueryWindowClient
         {
             var result = await
                          _queryService.SendRequestsAsync(DataRequestCollection.Create("Installation", "GetAppFileInfos",
-                             new { ApplicationId = 3 }));
-            if (result.HasError)
+                             new { ApplicationId = int.Parse(txtId.Text) }));
+            if (_queryService.HasError)
             {
-                MessageBox.Show(result.Error);
+                MessageBox.Show(_queryService.Error);
             }
             else
             {
-                datMain.DataContext = result.FirstTable;
+                datMain.DataContext = result.GetFirstTable();
             }
 
             /*var ints = await Http.GetAsync<int[]>(INTEGER_URL);
