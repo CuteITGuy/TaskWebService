@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using CB.Database.SqlServer;
 using CB.Web.WebServices;
@@ -52,6 +53,11 @@ namespace DataQueryWindowClient
             if (files == null) return;
 
             var file = files[0];
+            var fileInfoId = await InsertFileInfo(file);
+        }
+
+        private async Task<int?> InsertFileInfo(string file)
+        {
             var args = new
             {
                 ApplicationId = int.Parse(txtId.Text),
@@ -71,11 +77,12 @@ namespace DataQueryWindowClient
             if (_queryService.HasError)
             {
                 MessageBox.Show(_queryService.Error);
+                return null;
             }
             else
             {
                 var fileInfoId = Convert.ToInt32(result.GetFirstValue());
-                txtFileInfoId.Text = fileInfoId.ToString();
+                return fileInfoId;
             }
         }
     }
