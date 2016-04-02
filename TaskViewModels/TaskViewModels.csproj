@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskSaveDeleteViewModel.cs" />
     <Compile Include="TaskWindowClientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +56,17 @@
       <Project>{075169a6-70e2-4d99-9846-addab8905086}</Project>
       <Name>TaskModels</Name>
     </ProjectReference>
+    <ProjectReference Include="D:\Library\Dot Net\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Library\Dot Net\CB.Web\CB.Web.WebServices\CB.Web.WebServices.csproj">
+      <Project>{0b687f0c-192a-4dd8-a8b3-bfd7ae2f6047}</Project>
+      <Name>CB.Web.WebServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

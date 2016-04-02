@@ -123,6 +123,14 @@
       <Project>{5BA80972-BE5D-4670-A0F0-287BD6DF946E}</Project>
       <Name>TaskViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="D:\Library\Dot Net\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Library\Dot Net\CB.Web\CB.Web.WebServices\CB.Web.WebServices.csproj">
+      <Project>{0b687f0c-192a-4dd8-a8b3-bfd7ae2f6047}</Project>
+      <Name>CB.Web.WebServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
