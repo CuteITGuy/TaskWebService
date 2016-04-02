@@ -111,6 +111,10 @@
     </SplashScreen>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskDataAccess\TaskDataAccess.csproj">
       <Project>{543fcd55-be15-40b6-a9d9-d7a0e5aacd6c}</Project>
       <Name>TaskDataAccess</Name>
@@ -120,7 +124,7 @@
       <Name>TaskModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\TaskViewModels\TaskViewModels.csproj">
-      <Project>{5BA80972-BE5D-4670-A0F0-287BD6DF946E}</Project>
+      <Project>{5ba80972-be5d-4670-a0f0-287bd6df946e}</Project>
       <Name>TaskViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="D:\Library\Dot Net\CB.Model\CB.Model.Common\CB.Model.Common.csproj">

@@ -21,8 +21,8 @@ namespace TaskViewModels
         private TaskInfo _newTask = new TaskInfo();
         private ICommand _saveTaskAsyncCommand;
 
-        private readonly ITaskDataAccessAsync _taskDataAccess =
-            TaskDataAccessCreator.CreateFromSetting() as ITaskDataAccessAsync;
+        private readonly ITaskDataAccess _taskDataAccess =
+            TaskDataAccessCreator.CreateFromSetting();
 
         private IEnumerable<TaskInfo> _tasks;
         private TaskInfo _taskSavingOrDeleting;
